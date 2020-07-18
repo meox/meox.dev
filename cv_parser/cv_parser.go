@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/meox/cv.dev/color"
+	"github.com/meox/meox.dev/color"
 )
 
 type tokenType int

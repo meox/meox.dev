@@ -1,4 +1,4 @@
-module github.com/meox/cv.dev
+module github.com/meox/meox.dev
 
 go 1.14
 

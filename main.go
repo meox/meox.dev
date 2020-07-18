@@ -4,8 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/meox/cv.dev/cv_parser"
-
+	"github.com/meox/meox.dev/cv_parser"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/pflag"
 )
