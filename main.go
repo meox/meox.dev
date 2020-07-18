@@ -3,46 +3,26 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/meox/meox.dev/cv_parser"
 	log "github.com/sirupsen/logrus"
-	"github.com/spf13/pflag"
 )
 
 func main() {
-	noSSL := pflag.Bool("no-ssl", false, "non SSL mode")
-	certFile := pflag.String("cert-file", "", "cert file")
-	keyFile := pflag.String("key-file", "", "key file")
-	address := pflag.String("listen-ip", "0.0.0.0", "listen address")
-	port := pflag.Int("port", 3000, "server port")
 
-	pflag.Parse()
-
-	if !*noSSL {
-		if certFile == nil {
-			log.Fatalf("missing cert file")
-		}
-		if keyFile == nil {
-			log.Fatalf("missing key file")
-		}
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+		log.Printf("Defaulting to port %s", port)
 	}
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", myCv)
 
-	log.Infof("server starting on port %d", *port)
-
-	var err error
-	if *noSSL {
-		err = http.ListenAndServe(fmt.Sprintf("%s:%d", *address, *port), mux)
-	} else {
-		err = http.ListenAndServeTLS(fmt.Sprintf("%s:%d", *address, *port), *certFile, *keyFile, mux)
-	}
-
-	if err != nil {
-		log.Fatalf("server exited: %v", err)
-	}
-	log.Info("server closed")
+	log.Infof("server starting on port %d", port)
+	err := http.ListenAndServe(fmt.Sprintf(":%s", port), mux)
+	log.Info("server closed: %v", err)
 }
 
 func myCv(w http.ResponseWriter, req *http.Request) {
