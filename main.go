@@ -20,7 +20,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", myCv)
 
-	log.Infof("server starting on port %d", port)
+	log.Infof("server starting on port %s", port)
 	err := http.ListenAndServe(fmt.Sprintf(":%s", port), mux)
 	log.Info("server closed: %v", err)
 }
