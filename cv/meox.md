@@ -5,12 +5,12 @@
 :email: glmeocci@gmail.com
 :github: https://github.com/meox
 :town: Barberino Tavarnelle (Firenze)
-:mobile: +39 338-6118368
 :web: https://www.meocci.it
 
 ## Professional Experience
 
-- July 2019 - Present: Senior Software Engineer @RStor (Italy (Florence), USA (Saratoga))
+- Sept 2021 - present: Senior Software Engineer @Athonet (Italy (Vicenza))
+- July 2019 - Sept 2021: Senior Software Engineer @RStor (Italy (Florence), USA (Saratoga))
 - Oct 2018 - June 2019: Senior Software Engineer @Extendi S.r.l. (Florence, Italy)
 - Jan 2016 - Oct 2018: Senior Software Engineer @Commprove S.p.A. (Florence, Italy)
 - Dec 2012 - Dec 2015: Software Engineer @Commprove S.p.A. (Florence, Italy)
@@ -40,8 +40,9 @@ was developed in C, Java and Matlab. (University of Siena)
 
 ## Skills
 
-- C++17: fast aggregation for real time data
-- Go: S3 exa-scale storage layer
+- Erlang: 5G protocols & NF
 - Elixir: concurrent microservices
+- Go: S3 exa-scale storage layer
+- C++17: fast aggregation for real time data
 - Scala: BigData application for TELCO operators
 - Debian Linux and other Unix systems

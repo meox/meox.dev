@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strings"
+
+	"github.com/meox/meox.dev/contentwriter"
 
 	"github.com/meox/meox.dev/cv_parser"
 	log "github.com/sirupsen/logrus"
@@ -32,7 +35,16 @@ func myCv(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	w.Header().Set("Content-Type", "plain/text; charset=utf-8")
+	// instantiate the right content-writer
+	var contentWriter contentwriter.ContentWriter
+	accept := req.Header.Get("Accept")
+	if strings.Contains(accept, "text/html") {
+		contentWriter = contentwriter.NewHtml(w)
+	} else {
+		contentWriter = contentwriter.NewPlain(w)
+	}
+
+	contentWriter.ContentType()
 
 	fd, err := cv_parser.Open("cv/meox.md")
 	if err != nil {
@@ -41,7 +53,14 @@ func myCv(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	body, err := fd.Parse()
+	err = contentWriter.Header()
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		log.Errorf("cannot write header: %v", err)
+		return
+	}
+
+	body, err := fd.Parse(contentWriter)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		log.Errorf("error parsing cv: %v", err)
