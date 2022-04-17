@@ -59,9 +59,6 @@ func (p *PlainWriter) Write(parsed token.Token) string {
 	case token.Web:
 		rs.Write([]byte{0xF0, 0x9F, 0x8C, 0x90})
 		rs.WriteString(" " + parsed.Value)
-	case token.ElementList:
-		rs.Write([]byte{0xE1, 0x9B, 0xAB})
-		rs.WriteString(" " + parsed.Value)
 	case token.Empty:
 		rs.WriteString("")
 	}

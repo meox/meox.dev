@@ -77,8 +77,5 @@ func parseLine(s string) token.Token {
 	if strings.HasPrefix(s, ":job-title: ") {
 		return token.Token{Type: token.JobTitle, Value: strings.TrimPrefix(s, ":job-title: ")}
 	}
-	if strings.HasPrefix(s, "- ") {
-		return token.Token{Type: token.ElementList, Value: strings.TrimPrefix(s, "- ")}
-	}
 	return token.Token{Type: token.Text, Value: s}
 }

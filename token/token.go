@@ -7,7 +7,6 @@ const (
 	Subtitle
 	Text
 	Email
-	ElementList
 	Town
 	Web
 	Github
