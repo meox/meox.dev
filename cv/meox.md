@@ -6,7 +6,7 @@
 :mobile: +393286118368
 :github: https://github.com/meox
 :town: Barberino Tavarnelle (Firenze)
-:web: https://www.meocci.it
+:web: https://www.meox.dev
 
 ## Professional Experience
 
